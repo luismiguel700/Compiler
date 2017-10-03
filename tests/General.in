@@ -1,0 +1,23 @@
+class General
+{
+	int main()
+	{
+		var
+			int x,
+			lock l
+		in
+			x := 10;
+			l := newlock;
+			
+			val
+				th<int> r1 = fork shared(l){ x+1 },
+				th<int> w1 = fork sync(l){ x:= x+1 },
+				th<int> r2 = fork shared(l){ x-1 },
+				th<int> w2 = fork sync(l){ x := x-1 }
+			in
+				print wait r1;
+				print wait w1;
+				print wait r2;
+				print wait w2
+	}
+}

@@ -1,0 +1,12 @@
+class IfElse
+{
+	int main()
+	{
+		var int a, int b in
+			a := (b := 5);
+			if a=b then
+				print !1
+			else
+				print !0
+	}
+}

@@ -1,0 +1,40 @@
+class All
+{
+	int getCube(int x){x*x*x}
+
+	int main()
+	{
+		var 
+			int n,
+			lock l,
+			All c
+		in
+			n := 5;
+			l := newlock;
+			c := new All;
+			
+			val
+				th<int> t1 = fork
+				(
+					shared(l)
+					{
+						if n > 5 then
+							n := 0 - 10
+						else
+							n := 0 - 5
+					}	
+				),
+				th<int> t2 = fork
+				(
+					sync(l)
+					{
+						while(n > 0)
+						{
+							n := n - 1
+						}
+					}
+				)
+			in
+				print c.getCube((wait t1) + (wait t2))
+	}
+}

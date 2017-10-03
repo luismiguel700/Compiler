@@ -1,0 +1,9 @@
+class SharedSync
+{
+	int main()
+	{
+		var lock l in
+			l := newlock;
+			print shared(l){1+1} + sync(l){2+2}
+	}
+}

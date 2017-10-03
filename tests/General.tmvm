@@ -1,0 +1,326 @@
+class General
+{
+
+
+method int main()
+{
+locals(Cell<int>,Cell<lock>,thread<int>,thread<int>,thread<int>,thread<int>)
+
+l1:empty
+newobj Cell<int>
+stloc 0
+newobj Cell<lock>
+stloc 1
+ldloc 0
+ldint 10
+br l5
+
+l2:{int}
+ret
+
+l5:{Cell<int>,int}
+call int set(int)
+br l4
+
+l6:{Cell<lock>,lock}
+call lock set(lock)
+br l3
+
+l4:{int}
+pop
+ldloc 1
+newlock
+br l6
+
+l7:{thread<int>}
+stloc 2
+ldarg 0
+ldloc 1
+ldloc 0
+fork int methodGenerated3(Cell<lock>,Cell<int>)
+br l15
+
+l15:{thread<int>}
+stloc 3
+ldarg 0
+ldloc 1
+ldloc 0
+fork int methodGenerated5(Cell<lock>,Cell<int>)
+br l24
+
+l24:{thread<int>}
+stloc 4
+ldarg 0
+ldloc 1
+ldloc 0
+fork int methodGenerated7(Cell<lock>,Cell<int>)
+br l32
+
+l32:{thread<int>}
+stloc 5
+ldloc 2
+br l45
+
+l44:{int}
+dup
+printint 
+br l43
+
+l45:{thread<int>}
+wait
+br l44
+
+l46:{int}
+dup
+printint 
+br l42
+
+l47:{thread<int>}
+wait
+br l46
+
+l43:{int}
+pop
+ldloc 3
+br l47
+
+l48:{int}
+dup
+printint 
+br l41
+
+l49:{thread<int>}
+wait
+br l48
+
+l42:{int}
+pop
+ldloc 4
+br l49
+
+l50:{int}
+dup
+printint 
+br l2
+
+l51:{thread<int>}
+wait
+br l50
+
+l41:{int}
+pop
+ldloc 5
+br l51
+
+l3:{lock}
+pop
+ldarg 0
+ldloc 1
+ldloc 0
+fork int methodGenerated1(Cell<lock>,Cell<int>)
+br l7
+}
+
+
+method int methodGenerated7(Cell<lock>,Cell<int>)
+{
+locals(Cell<lock>,Cell<int>)
+
+l34:empty
+ldarg 2
+stloc 1
+ldarg 1
+stloc 0
+ldloc 0
+call lock get()
+br l35
+
+l33:{int}
+ret
+
+l35:{lock}
+ldarg 0
+ldloc 1
+sync int methodGenerated8(Cell<int>)
+br l33
+}
+
+
+method int methodGenerated8(Cell<int>)
+{
+locals(Cell<int>)
+
+l37:empty
+ldarg 1
+stloc 0
+ldloc 0
+ldloc 0
+call int get()
+br l39
+
+l36:{int}
+ret
+
+l38:{Cell<int>,int}
+call int set(int)
+br l36
+
+l39:{Cell<int>,int}
+ldint 1
+br l40
+
+l40:{Cell<int>,int,int}
+sub
+br l38
+}
+
+
+method int methodGenerated5(Cell<lock>,Cell<int>)
+{
+locals(Cell<lock>,Cell<int>)
+
+l26:empty
+ldarg 2
+stloc 1
+ldarg 1
+stloc 0
+ldloc 0
+call lock get()
+br l27
+
+l25:{int}
+ret
+
+l27:{lock}
+ldarg 0
+ldloc 1
+shared int methodGenerated6(Cell<int>)
+br l25
+}
+
+
+method int methodGenerated6(Cell<int>)
+{
+locals(Cell<int>)
+
+l29:empty
+ldarg 1
+stloc 0
+ldloc 0
+call int get()
+br l30
+
+l28:{int}
+ret
+
+l30:{int}
+ldint 1
+br l31
+
+l31:{int,int}
+sub
+br l28
+}
+
+
+method int methodGenerated3(Cell<lock>,Cell<int>)
+{
+locals(Cell<lock>,Cell<int>)
+
+l17:empty
+ldarg 2
+stloc 1
+ldarg 1
+stloc 0
+ldloc 0
+call lock get()
+br l18
+
+l16:{int}
+ret
+
+l18:{lock}
+ldarg 0
+ldloc 1
+sync int methodGenerated4(Cell<int>)
+br l16
+}
+
+
+method int methodGenerated4(Cell<int>)
+{
+locals(Cell<int>)
+
+l20:empty
+ldarg 1
+stloc 0
+ldloc 0
+ldloc 0
+call int get()
+br l22
+
+l19:{int}
+ret
+
+l21:{Cell<int>,int}
+call int set(int)
+br l19
+
+l22:{Cell<int>,int}
+ldint 1
+br l23
+
+l23:{Cell<int>,int,int}
+add
+br l21
+}
+
+
+method int methodGenerated1(Cell<lock>,Cell<int>)
+{
+locals(Cell<lock>,Cell<int>)
+
+l9:empty
+ldarg 2
+stloc 1
+ldarg 1
+stloc 0
+ldloc 0
+call lock get()
+br l10
+
+l8:{int}
+ret
+
+l10:{lock}
+ldarg 0
+ldloc 1
+shared int methodGenerated2(Cell<int>)
+br l8
+}
+
+
+method int methodGenerated2(Cell<int>)
+{
+locals(Cell<int>)
+
+l12:empty
+ldarg 1
+stloc 0
+ldloc 0
+call int get()
+br l13
+
+l11:{int}
+ret
+
+l13:{int}
+ldint 1
+br l14
+
+l14:{int,int}
+add
+br l11
+}
+
+}

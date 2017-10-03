@@ -1,0 +1,336 @@
+class Factorial
+{
+
+
+method int main()
+{
+locals(Cell<int>,Cell<Factorial>,thread<int>,thread<int>,int,int,int,int,thread<int>,thread<int>,Cell<Factorial>,Cell<int>)
+
+l1:empty
+newobj Cell<int>
+stloc 0
+newobj Cell<Factorial>
+stloc 1
+ldloc 0
+ldint 3
+br l5
+
+l2:{int}
+ret
+
+l5:{Cell<int>,int}
+call int set(int)
+br l4
+
+l6:{Cell<Factorial>,Factorial}
+call Factorial set(Factorial)
+br l3
+
+l4:{int}
+pop
+ldloc 1
+newobj Factorial
+br l6
+
+l7:{thread<int>}
+stloc 2
+ldarg 0
+ldloc 1
+ldloc 0
+fork int methodGenerated2(Cell<Factorial>,Cell<int>)
+br l14
+
+l14:{thread<int>}
+stloc 3
+ldloc 2
+br l22
+
+l21:{int}
+stloc 4
+ldloc 3
+br l24
+
+l22:{thread<int>}
+wait
+br l21
+
+l23:{int}
+stloc 5
+ldloc 4
+br l27
+
+l24:{thread<int>}
+wait
+br l23
+
+l27:{int}
+ldloc 5
+br l28
+
+l28:{int,int}
+ceq
+br l25
+
+l29:{int}
+dup
+printint 
+br l2
+
+l30:{int}
+dup
+printint 
+br l2
+
+l31:{int}
+ldint 1
+br l32
+
+l32:{int,int}
+sub
+br l30
+
+l25:{int}
+brfalse l26
+ldloc 4
+br l29
+
+l26:empty
+ldint 0
+br l31
+
+l3:{Factorial}
+pop
+ldarg 0
+ldloc 1
+ldloc 0
+fork int methodGenerated1(Cell<Factorial>,Cell<int>)
+br l7
+}
+
+
+method int methodGenerated2(Cell<Factorial>,Cell<int>)
+{
+locals(Cell<Factorial>,Cell<int>)
+
+l16:empty
+ldarg 2
+stloc 1
+ldarg 1
+stloc 0
+ldloc 0
+call Factorial get()
+br l17
+
+l15:{int}
+ret
+
+l18:{Factorial,int}
+call int factRec(int)
+br l15
+
+l17:{Factorial}
+ldloc 1
+call int get()
+br l19
+
+l19:{Factorial,int}
+ldloc 1
+call int get()
+br l20
+
+l20:{Factorial,int,int}
+add
+br l18
+}
+
+
+method int methodGenerated1(Cell<Factorial>,Cell<int>)
+{
+locals(Cell<Factorial>,Cell<int>)
+
+l9:empty
+ldarg 2
+stloc 1
+ldarg 1
+stloc 0
+ldloc 0
+call Factorial get()
+br l10
+
+l8:{int}
+ret
+
+l11:{Factorial,int}
+call int factIter(int)
+br l8
+
+l10:{Factorial}
+ldloc 1
+call int get()
+br l12
+
+l12:{Factorial,int}
+ldloc 1
+call int get()
+br l13
+
+l13:{Factorial,int,int}
+add
+br l11
+}
+
+
+method int factIter(int)
+{
+locals(Cell<int>,Cell<int>)
+
+l1:empty
+newobj Cell<int>
+stloc 0
+newobj Cell<int>
+stloc 1
+ldloc 1
+ldarg 1
+br l6
+
+l2:{int}
+ret
+
+l6:{Cell<int>,int}
+call int set(int)
+br l5
+
+l7:{Cell<int>,int}
+call int set(int)
+br l4
+
+l5:{int}
+pop
+ldloc 0
+ldint 1
+br l7
+
+l12:{int}
+ldint 1
+br l13
+
+l13:{int,int}
+cgt
+br l8
+
+l15:{Cell<int>,int}
+call int set(int)
+br l14
+
+l16:{Cell<int>,int}
+ldloc 1
+call int get()
+br l17
+
+l17:{Cell<int>,int,int}
+mul
+br l15
+
+l18:{Cell<int>,int}
+call int set(int)
+br l9
+
+l19:{Cell<int>,int}
+ldint 1
+br l20
+
+l20:{Cell<int>,int,int}
+sub
+br l18
+
+l14:{int}
+pop
+ldloc 1
+ldloc 1
+call int get()
+br l19
+
+l10:empty
+ldloc 1
+call int get()
+br l12
+
+l8:{int}
+brfalse l11
+ldloc 0
+ldloc 0
+call int get()
+br l16
+
+l9:{int}
+pop
+br l10
+
+l11:empty
+ldint 0
+br l3
+
+l4:{int}
+pop
+br l10
+
+l3:{int}
+pop
+ldloc 0
+call int get()
+br l2
+}
+
+
+method int factRec(int)
+{
+l1:empty
+ldarg 1
+br l5
+
+l2:{int}
+ret
+
+l5:{int}
+ldint 1
+br l6
+
+l6:{int,int}
+cgt
+br l3
+
+l10:{int,Factorial,int}
+call int factRec(int)
+br l8
+
+l9:{int,Factorial}
+ldarg 1
+br l11
+
+l11:{int,Factorial,int}
+ldint 1
+br l12
+
+l12:{int,Factorial,int,int}
+sub
+br l10
+
+l7:{int}
+ldarg 0
+br l9
+
+l8:{int,int}
+mul
+br l2
+
+l3:{int}
+brfalse l4
+ldarg 1
+br l7
+
+l4:empty
+ldint 1
+br l2
+}
+
+}

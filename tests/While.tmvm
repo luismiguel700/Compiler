@@ -1,0 +1,94 @@
+class While
+{
+
+
+method int main()
+{
+locals(Cell<int>,Cell<int>)
+
+l0:empty
+newobj Cell<int>
+stloc 0
+newobj Cell<int>
+stloc 1
+ldloc 0
+ldint 0
+br l3
+
+l1:{int}
+ret
+
+l3:{Cell<int>,int}
+call int set(int)
+br l2
+
+l8:{int}
+ldint 10
+br l9
+
+l9:{int,int}
+clt
+br l4
+
+l11:{Cell<int>,int}
+call int set(int)
+br l10
+
+l12:{Cell<int>,int}
+ldint 2
+br l13
+
+l13:{Cell<int>,int,int}
+add
+br l11
+
+l14:{int}
+dup
+printint 
+br l5
+
+l15:{Cell<int>,int}
+call int set(int)
+br l14
+
+l16:{Cell<int>,int}
+ldint 1
+br l17
+
+l17:{Cell<int>,int,int}
+add
+br l15
+
+l10:{int}
+pop
+ldloc 0
+ldloc 0
+call int get()
+br l16
+
+l6:empty
+ldloc 0
+call int get()
+br l8
+
+l4:{int}
+brfalse l7
+ldloc 1
+ldloc 1
+call int get()
+br l12
+
+l5:{int}
+pop
+br l6
+
+l7:empty
+ldint 0
+br l1
+
+l2:{int}
+pop
+br l6
+}
+
+}

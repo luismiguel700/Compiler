@@ -1,0 +1,10 @@
+class External
+{
+	int main()
+	{
+		var Point p in
+			p := new Point;
+			p.setX(7);
+			print p.getX()
+	}
+}

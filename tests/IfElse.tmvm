@@ -1,0 +1,73 @@
+class IfElse
+{
+
+
+method int main()
+{
+locals(Cell<int>,Cell<int>,Cell<int>,Cell<int>)
+
+l1:empty
+newobj Cell<int>
+stloc 0
+newobj Cell<int>
+stloc 1
+ldloc 0
+ldloc 1
+ldint 5
+br l5
+
+l2:{int}
+ret
+
+l4:{Cell<int>,int}
+call int set(int)
+br l3
+
+l5:{Cell<int>,Cell<int>,int}
+call int set(int)
+br l4
+
+l8:{int}
+ldloc 1
+call int get()
+br l9
+
+l9:{int,int}
+ceq
+br l6
+
+l10:{int}
+dup
+printint 
+br l2
+
+l11:{int}
+not
+br l10
+
+l12:{int}
+dup
+printint 
+br l2
+
+l13:{int}
+not
+br l12
+
+l6:{int}
+brfalse l7
+ldint 1
+br l11
+
+l7:empty
+ldint 0
+br l13
+
+l3:{int}
+pop
+ldloc 0
+call int get()
+br l8
+}
+
+}

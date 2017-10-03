@@ -1,0 +1,100 @@
+class Point
+{
+field int x;
+
+method int getX()
+{
+l1:empty
+ldarg 0
+ldfld x
+br l2
+
+l2:{int}
+ret
+}
+
+
+method int setX(int)
+{
+l1:empty
+ldarg 0
+ldarg 1
+br l3
+
+l2:{int}
+ret
+
+l3:{Point,int}
+stfld x
+ldarg 0
+ldfld x
+br l2
+}
+
+
+method int main()
+{
+locals(Cell<Point>)
+
+l1:empty
+newobj Cell<Point>
+stloc 0
+ldloc 0
+newobj Point
+br l5
+
+l2:{int}
+ret
+
+l5:{Cell<Point>,Point}
+call Point set(Point)
+br l4
+
+l7:{Point,int}
+call int setX(int)
+br l3
+
+l6:{Point}
+ldint 7
+br l7
+
+l4:{Point}
+pop
+ldloc 0
+call Point get()
+br l6
+
+l8:{int}
+dup
+printint 
+br l2
+
+l10:{Point,int}
+call int setX(int)
+br l8
+
+l9:{Point}
+ldloc 0
+call Point get()
+br l13
+
+l13:{Point,Point}
+call int getX()
+br l11
+
+l11:{Point,int}
+ldint 2
+br l12
+
+l12:{Point,int,int}
+mul
+br l10
+
+l3:{int}
+pop
+ldloc 0
+call Point get()
+br l9
+}
+
+}

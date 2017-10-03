@@ -1,0 +1,22 @@
+class Cell<T>
+{
+	field T val;
+	
+	method T get()
+	{
+		l0:empty
+		ldarg 0
+		ldfld val
+		ret
+	}
+	
+	method T set(T)
+	{
+		l0:empty
+		ldarg 0
+		ldarg 1
+		stfld val
+		ldarg 1
+		ret
+	}
+}

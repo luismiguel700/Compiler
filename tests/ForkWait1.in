@@ -1,0 +1,8 @@
+class ForkWait1
+{
+	int main()
+	{
+		val th<int> x = fork (1+1) in
+			print wait x
+	}
+}

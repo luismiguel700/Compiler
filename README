@@ -1,0 +1,31 @@
+EXECUCAO
+
+argumento para executar o compilador: pasta com as classes a compilar (cada classe deve estar num ficheiro ".in") 
+
+ARQUITECTURA:
+
+Core: ASTs da linguagem core e tipos
+Env: Ambientes do processo de tradução
+Exceptions: Todas as excepções
+FreeIds: Pesquisa, pela AST, por ids livres
+Lexer: Lexer do Parser
+Otpimizer: Optimiza os código da linguagem intermédia
+Parser: Valida sintaticamente a linguagem e carrega as ASTs
+Subset: Renomeia, ao longo da AST, determinados ids
+TMVM: representação interna das instruções da linguagem intermédia
+Translator: Para cada nó da AST, efectua a tradução apropriada
+TypeSystem: Para cada nó da AST, pesquisa por eventuais erros de tipos
+Unparser: Para um dado programa na linguagem intermédia, e um dado canal de escrita, escreve o programa em texto
+Util.ml: Funcoes genéricas
+
+COMO ADICIONAR UMA NOVA EXPRESSAO:
+
+- Adicionar um novo nó da AST no Core.ml
+- Alterar o parser e o lexer
+- Programar a acção apropriada no tradutor, no subset e no freeIds, quando o novo nó é analisado
+
+COMO ADICIONAR UMA NOVA INSTRUCAO:
+
+- Adicionar a nova instrução no TMVM.ml
+- Adicionar uma nova entrada no unparser das instruções
+

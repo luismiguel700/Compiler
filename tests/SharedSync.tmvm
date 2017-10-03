@@ -1,0 +1,92 @@
+class SharedSync
+{
+
+
+method int main()
+{
+locals(Cell<lock>)
+
+l1:empty
+newobj Cell<lock>
+stloc 0
+ldloc 0
+newlock
+br l4
+
+l2:{int}
+ret
+
+l4:{Cell<lock>,lock}
+call lock set(lock)
+br l3
+
+l5:{int}
+dup
+printint 
+br l2
+
+l8:{lock}
+ldarg 0
+shared int methodGenerated1()
+br l6
+
+l13:{int,lock}
+ldarg 0
+sync int methodGenerated2()
+br l7
+
+l6:{int}
+ldloc 0
+call lock get()
+br l13
+
+l7:{int,int}
+add
+br l5
+
+l3:{lock}
+pop
+ldloc 0
+call lock get()
+br l8
+}
+
+
+method int methodGenerated1()
+{
+l10:empty
+ldint 1
+br l11
+
+l9:{int}
+ret
+
+l11:{int}
+ldint 1
+br l12
+
+l12:{int,int}
+add
+br l9
+}
+
+
+method int methodGenerated2()
+{
+l15:empty
+ldint 2
+br l16
+
+l14:{int}
+ret
+
+l16:{int}
+ldint 2
+br l17
+
+l17:{int,int}
+add
+br l14
+}
+
+}

@@ -1,0 +1,51 @@
+class ForkWait1
+{
+
+
+method int main()
+{
+locals(thread<int>)
+
+l1:empty
+ldarg 0
+fork int methodGenerated1()
+br l3
+
+l2:{int}
+ret
+
+l3:{thread<int>}
+stloc 0
+ldloc 0
+br l9
+
+l8:{int}
+dup
+printint 
+br l2
+
+l9:{thread<int>}
+wait
+br l8
+}
+
+
+method int methodGenerated1()
+{
+l5:empty
+ldint 1
+br l6
+
+l4:{int}
+ret
+
+l6:{int}
+ldint 1
+br l7
+
+l7:{int,int}
+add
+br l4
+}
+
+}

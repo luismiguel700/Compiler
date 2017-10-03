@@ -1,0 +1,13 @@
+class While
+{
+	int main()
+	{
+		var int a, int b in
+			a := 0;
+			while(a<10)
+			{
+				b := b+2;
+				print a := a+1
+			}
+	}
+}

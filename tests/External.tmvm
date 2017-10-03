@@ -1,0 +1,53 @@
+class External
+{
+
+
+method int main()
+{
+locals(Cell<Point>)
+
+l1:empty
+newobj Cell<Point>
+stloc 0
+ldloc 0
+newobj Point
+br l5
+
+l2:{int}
+ret
+
+l5:{Cell<Point>,Point}
+call Point set(Point)
+br l4
+
+l7:{Point,int}
+call int setX(int)
+br l3
+
+l6:{Point}
+ldint 7
+br l7
+
+l4:{Point}
+pop
+ldloc 0
+call Point get()
+br l6
+
+l8:{int}
+dup
+printint 
+br l2
+
+l9:{Point}
+call int getX()
+br l8
+
+l3:{int}
+pop
+ldloc 0
+call Point get()
+br l9
+}
+
+}

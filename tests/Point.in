@@ -1,0 +1,16 @@
+class Point
+{
+	int x;
+
+	int getX() { x }
+
+	int setX(int newX) { x := newX }
+
+	int main()
+	{
+		var Point obj in
+			obj := new Point;
+			obj.setX(7);
+			print obj.setX(obj.getX()*2)
+	}
+}

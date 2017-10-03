@@ -1,0 +1,88 @@
+class ForkWait2
+{
+
+
+method int main()
+{
+locals(thread<int>,thread<int>)
+
+l1:empty
+ldarg 0
+fork int methodGenerated1()
+br l3
+
+l2:{int}
+ret
+
+l3:{thread<int>}
+stloc 0
+ldarg 0
+fork int methodGenerated2()
+br l8
+
+l8:{thread<int>}
+stloc 1
+ldloc 0
+br l16
+
+l13:{int}
+dup
+printint 
+br l2
+
+l16:{thread<int>}
+wait
+br l14
+
+l17:{int,thread<int>}
+wait
+br l15
+
+l14:{int}
+ldloc 1
+br l17
+
+l15:{int,int}
+add
+br l13
+}
+
+
+method int methodGenerated2()
+{
+l10:empty
+ldint 2
+br l11
+
+l9:{int}
+ret
+
+l11:{int}
+ldint 2
+br l12
+
+l12:{int,int}
+add
+br l9
+}
+
+
+method int methodGenerated1()
+{
+l5:empty
+ldint 1
+br l6
+
+l4:{int}
+ret
+
+l6:{int}
+ldint 1
+br l7
+
+l7:{int,int}
+add
+br l4
+}
+
+}
